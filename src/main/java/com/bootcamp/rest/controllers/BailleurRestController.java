@@ -33,7 +33,7 @@ public class BailleurRestController {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getListById(@PathParam("id") int id) throws SQLException {
-        Bailleur bailleur = derby.findByProperty("id", id);
+        Bailleur bailleur = derby.findById("id", id);
 
         if (bailleur == null) {
             return Response.status(404).entity(bailleur).build();
@@ -41,27 +41,40 @@ public class BailleurRestController {
             return Response.status(200).entity(bailleur).build();
         }
     }
-    
+
     @GET
     @Path("/list/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getListByParam(@PathParam("param") String param) throws SQLException {
-        Bailleur bailleur = derby.findByProperty("nom", param);
+        List<Bailleur> bailleurs = (List<Bailleur>) derby.findByProperty("nom", param);
 
-        if (bailleur == null) {
-            return Response.status(404).entity(bailleur).build();
+        if (bailleurs == null) {
+            return Response.status(404).entity(bailleurs).build();
         } else {
-            return Response.status(200).entity(bailleur).build();
+            return Response.status(200).entity(bailleurs).build();
         }
     }
 
-    /*
     @DELETE
-    @Path("/delete")
+    @Path("/delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDeleteListByParam(@QueryParam("id") String msg) throws SQLException {
-        Bailleur bailleur = derby.delete();
+    public Response getDeleteListByParam(@PathParam("id") int id) throws SQLException {
+        Bailleur bailleur = derby.findById("id", id);
+        derby.delete(bailleur);
         return Response.status(200).entity(bailleur).build();
     }
-     */
+
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void create(Bailleur bailleur) throws SQLException {
+        derby.create(bailleur);
+    }
+
+    @PUT
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(Bailleur bailleur) throws SQLException {
+        derby.create(bailleur);
+    }
 }
