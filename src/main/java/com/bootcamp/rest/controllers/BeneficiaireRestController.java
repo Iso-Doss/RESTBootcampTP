@@ -16,29 +16,29 @@ import javax.ws.rs.*;
  *
  * @author Iso-Doss
  */
-@Path("/projet")
-public class ProjetRestController {
+@Path("/beneficiaire")
+public class BeneficiaireRestController {
 
-    private ProjetRepository derby = new ProjetRepository("tpJpa");
+    private BeneficiaireRepository derby = new BeneficiaireRepository("tpJpa");
 
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getList() throws SQLException {
-        List<Projet> projets = derby.findAll();
-        return Response.status(200).entity(projets).build();
+        List<Beneficiaire> beneficiaires = derby.findAll();
+        return Response.status(200).entity(beneficiaires).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getListById(@PathParam("id") int id) throws SQLException {
-        Projet projet = derby.findById("id", id);
+        Beneficiaire beneficiaire = derby.findById("id", id);
 
-        if (projet == null) {
-            return Response.status(404).entity(projet).build();
+        if (beneficiaire == null) {
+            return Response.status(404).entity(beneficiaire).build();
         } else {
-            return Response.status(200).entity(projet).build();
+            return Response.status(200).entity(beneficiaire).build();
         }
     }
 
@@ -46,12 +46,12 @@ public class ProjetRestController {
     @Path("/list/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getListByParam(@PathParam("param") String param) throws SQLException {
-        List<Projet> projets = (List<Projet>) derby.findByProperty("nom", param);
+        List<Beneficiaire> beneficiaires = (List<Beneficiaire>) derby.findByProperty("nom", param);
 
-        if (projets == null) {
-            return Response.status(404).entity(projets).build();
+        if (beneficiaires == null) {
+            return Response.status(404).entity(beneficiaires).build();
         } else {
-            return Response.status(200).entity(projets).build();
+            return Response.status(200).entity(beneficiaires).build();
         }
     }
 
@@ -59,22 +59,22 @@ public class ProjetRestController {
     @Path("/delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDeleteListByParam(@PathParam("id") int id) throws SQLException {
-        Projet projet = derby.findById("id", id);
-        derby.delete(projet);
-        return Response.status(200).entity(projet).build();
+        Beneficiaire beneficiaire = derby.findById("id", id);
+        derby.delete(beneficiaire);
+        return Response.status(200).entity(beneficiaire).build();
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Projet projet) throws SQLException {
-        derby.create(projet);
+    public void create(Beneficiaire beneficiaire) throws SQLException {
+        derby.create(beneficiaire);
     }
 
     @PUT
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void update(Projet projet) throws SQLException {
-        derby.create(projet);
+    public void update(Beneficiaire beneficiaire) throws SQLException {
+        derby.create(beneficiaire);
     }
 }
