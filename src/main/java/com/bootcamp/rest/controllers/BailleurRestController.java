@@ -16,13 +16,13 @@ import javax.ws.rs.*;
  *
  * @author Iso-Doss
  */
-@Path("/bailleur")
+@Path("/bailleurs")
 public class BailleurRestController {
 
     private BailleurRepository derby = new BailleurRepository("tpJpa");
 
     @GET
-    @Path("/list")
+    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getList() throws SQLException {
         List<Bailleur> bailleurs = derby.findAll();
@@ -32,7 +32,7 @@ public class BailleurRestController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getListById(@PathParam("id") int id) throws SQLException {
+    public Response getById(@PathParam("id") int id) throws SQLException {
         Bailleur bailleur = derby.findById("id", id);
 
         if (bailleur == null) {
@@ -43,7 +43,7 @@ public class BailleurRestController {
     }
 
     @GET
-    @Path("/list/{param}")
+    @Path("/param/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getListByParam(@PathParam("param") String param) throws SQLException {
         List<Bailleur> bailleurs = (List<Bailleur>) derby.findByProperty("nom", param);
@@ -56,23 +56,22 @@ public class BailleurRestController {
     }
 
     @DELETE
-    @Path("/delete/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDeleteListByParam(@PathParam("id") int id) throws SQLException {
-        Bailleur bailleur = derby.findById("id", id);
+    public Response delete(Bailleur bailleur) throws SQLException {
         derby.delete(bailleur);
         return Response.status(200).entity(bailleur).build();
     }
 
     @POST
-    @Path("/create")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(Bailleur bailleur) throws SQLException {
         derby.create(bailleur);
     }
 
     @PUT
-    @Path("/update")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     public void update(Bailleur bailleur) throws SQLException {
         derby.create(bailleur);
