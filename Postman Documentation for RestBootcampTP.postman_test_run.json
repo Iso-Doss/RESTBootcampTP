@@ -1,0 +1,148 @@
+{
+	"id": "ee4fc699-53b1-9f7b-c364-d00ba1ddcae6",
+	"name": "Postman Documentation for RestBootcampTP",
+	"allTests": [],
+	"timestamp": 1509479912858,
+	"collection_id": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63",
+		"name": "Postman Documentation for RestBootcampTP",
+		"description": "Postman Documentation for RestBootcampTP",
+		"order": [],
+		"folders": [
+			{
+				"name": "Bailleur",
+				"description": "Tout conernant la documentation des ressources de Bailleur",
+				"collectionId": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63",
+				"collection": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63",
+				"order": [
+					"44295251-17a7-c616-f9fd-4eecb67c946e"
+				],
+				"owner": "2940484",
+				"folders_order": [],
+				"createdAt": 1509479121020,
+				"updatedAt": 1509479121020,
+				"id": "3bbb3308-b318-a223-4336-e82ae7ca2cbc",
+				"collection_id": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63"
+			},
+			{
+				"name": "Beneficiaire",
+				"description": "Tout conernant la documentation des ressources de Beneficiaire",
+				"collectionId": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63",
+				"collection": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63",
+				"order": [],
+				"owner": "2940484",
+				"folders_order": [],
+				"createdAt": 1509479121020,
+				"updatedAt": 1509479121020,
+				"id": "aad9a005-3613-389e-8176-3af07aa4b0f9",
+				"collection_id": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63"
+			}
+		],
+		"folders_order": [
+			"3bbb3308-b318-a223-4336-e82ae7ca2cbc",
+			"aad9a005-3613-389e-8176-3af07aa4b0f9"
+		],
+		"requests": [
+			{
+				"id": "44295251-17a7-c616-f9fd-4eecb67c946e",
+				"headers": "",
+				"headerData": [],
+				"url": "localhost:8080/rest/bailleurs/",
+				"queryParams": [],
+				"pathVariables": {},
+				"pathVariableData": [],
+				"preRequestScript": null,
+				"method": "GET",
+				"collectionId": "fbdd25af-d4ff-c158-bd27-ded7d6d12c63",
+				"data": null,
+				"dataMode": "params",
+				"name": "localhost:8080/rest/bailleurs/",
+				"description": "Ce Chemin permet d'accéder a la liste de tous les Bailleurs",
+				"descriptionFormat": "html",
+				"time": 1509479243833,
+				"version": 2,
+				"responses": [],
+				"tests": null,
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"folder": "3bbb3308-b318-a223-4336-e82ae7ca2cbc"
+			}
+		],
+		"timestamp": 1509479033756,
+		"synced": false,
+		"syncedFilename": "",
+		"remote_id": 0,
+		"remoteLink": "",
+		"remoteLinkUpdatedAt": null,
+		"public": false,
+		"owner": "2940484",
+		"subscribed": false,
+		"createdAt": 1509479033756,
+		"updatedAt": 1509479243880,
+		"write": true,
+		"published": false,
+		"favorite": false,
+		"permissions": {},
+		"syncedPermissions": {},
+		"sharedWithTeam": false
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [],
+	"results": [
+		{
+			"id": "44295251-17a7-c616-f9fd-4eecb67c946e",
+			"name": "localhost:8080/rest/bailleurs/",
+			"url": "localhost:8080/rest/bailleurs/",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 0,
+				"name": "",
+				"detail": ""
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2125
+			],
+			"allTests": [
+				{}
+			],
+			"time": 2125,
+			"totalRequestTime": 2125,
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 0,
+	"totalFail": 0,
+	"totalTime": 2125,
+	"lifecycle": "done",
+	"willStop": false,
+	"requests": [
+		{
+			"name": "localhost:8080/rest/bailleurs/",
+			"id": "44295251-17a7-c616-f9fd-4eecb67c946e",
+			"url": "localhost:8080/rest/bailleurs/",
+			"time": 2125,
+			"responseCode": {
+				"code": 0,
+				"name": "",
+				"detail": ""
+			},
+			"testPassFailCounts": {},
+			"gridTitles": [],
+			"gridData": [
+				[]
+			],
+			"tests": {}
+		}
+	],
+	"synced": false
+}

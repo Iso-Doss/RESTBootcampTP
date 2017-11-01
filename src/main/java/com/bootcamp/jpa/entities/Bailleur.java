@@ -6,6 +6,7 @@
 package com.bootcamp.jpa.entities;
 
 import com.bootcamp.jpa.enums.TypeDeBailleur;
+import com.wordnik.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -30,6 +31,9 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
             name = "Bailleur.countAll",
             query = "select count(bailleur) from Bailleur bailleur"),})
+@ApiModel(value = "Bailleur",
+        description = "représentation d'une resource REST Bailleur"
+)
 public class Bailleur extends Personne {
 
     @NotNull(message = "Le champ type de bailleur ne peut etre null.")
