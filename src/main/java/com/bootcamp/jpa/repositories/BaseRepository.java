@@ -86,7 +86,7 @@ public abstract class BaseRepository<T> {
         }
 
     }
-    
+
     /**
      * Méthode de recherche des informations
      *
@@ -116,6 +116,22 @@ public abstract class BaseRepository<T> {
      */
     public List<T> findAll() throws SQLException {
         return getEm().createQuery("select t from " + getEntityClass().getSimpleName() + " t").getResultList();
+    }
+
+    /**
+     * Méthode qui retourne des bailleurs avec un pagination appliqué
+     * @param offset
+     * @param limit
+     * @return 
+     */
+    public List<T> findAndPager(int offset, int limit) {
+
+        String className = entityClass.getSimpleName();
+        String s = "select ob FROM " + className + " ob";
+        Query query = getEm().createQuery(s);
+        query.setFirstResult(offset).setMaxResults(limit);
+        List<T> result = query.getResultList();
+        return result;
     }
 
     /**

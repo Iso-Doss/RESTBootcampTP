@@ -9,12 +9,12 @@ import java.util.*;
  */
 public class GenerateTableTest {
 
-    //@Test
+    @Test
     public void generateTablesMysql() {
         Persistence.generateSchema("tpJpa", new Properties());
     }
 
-    //@Test
+    @Test
     public void generateTablesDerby() {
         Persistence.generateSchema("com.bootcamp_TpJPA", new Properties());
     }

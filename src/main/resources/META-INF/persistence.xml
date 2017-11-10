@@ -15,6 +15,7 @@
         <class>com.bootcamp.jpa.entities.Livrable</class>
         <class>com.bootcamp.jpa.entities.IndicateurPerformance</class>
         <class>com.bootcamp.jpa.entities.Personne</class>
+        <class>com.bootcamp.jpa.entities.Impact</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/tpjpa"/>
             <property name="javax.persistence.jdbc.user" value="tpjpa"/>
@@ -39,6 +40,7 @@
         <class>com.bootcamp.jpa.entities.ProgrammeFournisseur</class>
         <class>com.bootcamp.jpa.entities.Livrable</class>
         <class>com.bootcamp.jpa.entities.IndicateurPerformance</class>
+        <class>com.bootcamp.jpa.entities.Impact</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tp-jpa?zeroDateTimeBehavior=convertToNull" />

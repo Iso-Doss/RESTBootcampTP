@@ -20,7 +20,7 @@ import io.swagger.annotations.*;
  * @author Iso-Doss
  */
 @Path("/bailleurs")
-@Api(value = "/bailleurs", description = "Api gérant  les bailleurs ")
+@Api(value = "/livrab", description = "Api gérant  les livrables ")
 public class BailleurRestController {
 
     private final BailleurRepository derby = new BailleurRepository("tpJpa");
@@ -41,9 +41,9 @@ public class BailleurRestController {
             responseContainer = "Bailleur"
     )
     @ApiResponses({
-        @ApiResponse(code = 20, message = "Bailleurs trouvé")
+        @ApiResponse(code = 201, message = "Ajout avec succès")
         ,
-     @ApiResponse(code = 404, message = "Aucun bailleurs trouvé")
+     @ApiResponse(code = 404, message = "impossible d'ajouter ce livrable")
     })
     public Response getList() throws SQLException {
         List<Bailleur> bailleurs = derby.findAll();
@@ -180,14 +180,17 @@ public class BailleurRestController {
      * @throws InvocationTargetException
      */
     @GET
-    @Path("/reponse_partielle/{id}")
+    @Path("/reponse_partiel/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByIdParam(@PathParam("id") int id, @QueryParam("fields") String fields) throws SQLException, IllegalArgumentException, IllegalAccessException, IntrospectionException, InvocationTargetException {
         String[] fieldArray = fields.split(",");
+        //BailleurRepository bailleurRepository = new BailleurRepository("punit-mysql");
         Bailleur bailleur = derby.findById("id", id);
         Map<String, Object> responseMap = new HashMap<>();
         PropertyDescriptor[] propertyDescriptors = Introspector.getBeanInfo(Bailleur.class).getPropertyDescriptors();
+
         for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
             Method method = propertyDescriptor.getReadMethod();
             if (check(fieldArray, propertyDescriptor.getName())) {
                 responseMap.put(propertyDescriptor.getName(), method.invoke(bailleur));
@@ -217,78 +220,13 @@ public class BailleurRestController {
     }
 
     /**
-     * Méthode qui récupère et les Bailleurs correspondant aux filtres passer en
-     * parametresStatus code 200 en cas de success et status code 404 en cas
-     * d'echec
-     *
-     * @param fields
-     * @return
-     * @throws SQLException
-     * @throws IllegalArgumentException
-     * @throws IllegalAccessException
-     * @throws IntrospectionException
-     * @throws InvocationTargetException
-     */
-    @GET
-    @Path("/reponse_filtrer")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getListFiltrer(@QueryParam("fields") String[] fields) throws SQLException, IllegalArgumentException, IllegalAccessException, IntrospectionException, InvocationTargetException {
-        /*String[] fieldArray = fields.split(",");
-        Bailleur bailleur = derby.findById("id", id);
-        Map<String, Object> responseMap = new HashMap<>();
-        PropertyDescriptor[] propertyDescriptors = Introspector.getBeanInfo(Bailleur.class).getPropertyDescriptors();
-        for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
-            Method method = propertyDescriptor.getReadMethod();
-            if (check(fieldArray, propertyDescriptor.getName())) {
-                responseMap.put(propertyDescriptor.getName(), method.invoke(bailleur));
-            }
-            System.out.println(method.invoke(bailleur));
-        }
-        return Response.status(200).entity(responseMap).build();
-         */
-        return null;
-    }
-
-    /**
-     * Méthode qui récupère et les Bailleurs trier grace aux filtres passer en
-     * parametres Status code 200 en cas de success et status code 404 en cas
-     * d'echec
-     *
-     * @param fields
-     * @return
-     * @throws SQLException
-     * @throws IllegalArgumentException
-     * @throws IllegalAccessException
-     * @throws IntrospectionException
-     * @throws InvocationTargetException
-     */
-    @GET
-    @Path("/reponse_trier")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getListTrier(@QueryParam("fields") String[] fields) throws SQLException, IllegalArgumentException, IllegalAccessException, IntrospectionException, InvocationTargetException {
-        /*String[] fieldArray = fields.split(",");
-        Bailleur bailleur = derby.findById("id", id);
-        Map<String, Object> responseMap = new HashMap<>();
-        PropertyDescriptor[] propertyDescriptors = Introspector.getBeanInfo(Bailleur.class).getPropertyDescriptors();
-        for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
-            Method method = propertyDescriptor.getReadMethod();
-            if (check(fieldArray, propertyDescriptor.getName())) {
-                responseMap.put(propertyDescriptor.getName(), method.invoke(bailleur));
-            }
-            System.out.println(method.invoke(bailleur));
-        }
-        return Response.status(200).entity(responseMap).build();
-         */
-        return null;
-    }
-
-    /**
      * Méthode qui verifie l'existant d'une chaine de caractere dans un tableau
      * de chaine de caractere La chaine et le tableau etant passe en parametre a
      * la fonction
      *
      */
     private boolean check(String[] fields, String field) {
+
         for (String field1 : fields) {
             if (field.equals(field1)) {
                 return true;

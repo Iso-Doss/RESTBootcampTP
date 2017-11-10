@@ -21,7 +21,7 @@ public class BailleurTest {
     private BailleurRepository mysql = new BailleurRepository("com.bootcamp_TpJPA");
     private BailleurRepository derby = new BailleurRepository("tpJpa");
 
-    //@Test
+    @Test
     public void createBailleurMysql() throws SQLException {
         List<Bailleur> bailleurs = new LinkedList();
 
@@ -39,7 +39,7 @@ public class BailleurTest {
 
     }
 
-    //@Test
+    @Test
     public void createBailleurDerby() throws SQLException {
         List<Bailleur> bailleurs = new LinkedList();
 
